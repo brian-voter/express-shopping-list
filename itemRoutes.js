@@ -41,8 +41,7 @@ router.post("/", function (req, res) {
 /** GET /items/:name: return single item { item: item } */
 router.get("/:name", function (req, res) {
 
-  let response = db.items.find((item) =>
-    item.name === req.params.name);
+  let response = db.items.find(item => item.name === req.params.name);
 
   if (!response) {
     throw new NotFoundError();
@@ -57,8 +56,7 @@ router.patch("/:name", function (req, res) {
     throw new BadRequestError();
   }
 
-  let patchItem = db.items.find((item) =>
-    item.name === req.params.name);
+  const patchItem = db.items.find(item => item.name === req.params.name);
 
   patchItem.name = req.body.name || patchItem.name;
   patchItem.price = req.body.price || patchItem.price;

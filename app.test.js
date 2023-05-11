@@ -15,7 +15,7 @@ beforeEach(function () {
 });
 
 afterAll(function () {
-
+    db.items.length = 0;
 });
 
 describe("GET /items", function () {
@@ -31,7 +31,7 @@ describe("GET /item", function () {
         expect(resp.body).toEqual({ name: "popsicle", price: 1.45 });
     });
 
-    test("GET /items/<invalid_name>", async function () {
+    test("GET /items/:invalid_name", async function () {
         const resp = await request(app).get("/items/an_invalid_item");
         expect(resp.body).toEqual({
             error: {
