@@ -3,7 +3,6 @@ const { NotFoundError } = require("./expressError");
 const app = express();
 const morgan = require("morgan");
 
-//TODO: rename:
 const itemRoutes = require("./itemRoutes");
 
 app.use(express.json());
@@ -11,10 +10,7 @@ app.use(express.json());
 // this applies to all requests at all paths
 app.use(morgan('dev'));
 
-//TODO: rename:
 app.use("/items", itemRoutes);
-
-
 
 
 /** 404 handler: matches unmatched routes; raises NotFoundError. */
